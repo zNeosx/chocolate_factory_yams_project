@@ -12,4 +12,13 @@
     font-size: 0.9em;
     background-color: var(--danger-message-color);
   }
+  .restore-pastrie-btn {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    width: max-content;
+    margin: 0;
+    font-size: 0.9em;
+    background-color: var(--success-message-color);
+  }
 }

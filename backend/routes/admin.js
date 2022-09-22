@@ -3,6 +3,7 @@ import {
   addPastry,
   adminlogin,
   deletePastrie,
+  restorePastry,
 } from "../controllers/AdminController.js";
 import { checkAuth } from "../middlewares/checkAuth.js";
 
@@ -15,6 +16,7 @@ router.get("/", (_, res) => {
 // Admin routes
 router.post("/login", adminlogin);
 router.post("/addPastry", checkAuth, addPastry);
-router.delete("/deletePastry/:id", checkAuth, deletePastrie);
+router.get("/deletePastry/:id", checkAuth, deletePastrie);
+router.get("/restorePastry/:id", checkAuth, restorePastry);
 
 export default router;

@@ -68,7 +68,15 @@ export const adminLoginRequest = (formData) => {
 };
 
 export const deleteOnePastryRequest = (idPastry) => {
-  return Axios.delete(`admin/deletePastry/${idPastry}`, {
+  return Axios.get(`admin/deletePastry/${idPastry}`, {
+    headers: {
+      "x-access-token": `${sessionStorage.getItem("token")}`,
+    },
+  });
+};
+
+export const restoreOnePastryRequest = (idPastry) => {
+  return Axios.get(`admin/restorePastry/${idPastry}`, {
     headers: {
       "x-access-token": `${sessionStorage.getItem("token")}`,
     },

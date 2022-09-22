@@ -28,7 +28,7 @@ export const init = async (_, res) => {
 
 export const getAllPastries = async (req, res) => {
   try {
-    const pastries = await PastriesModel.find({ isDeleted: false });
+    const pastries = await PastriesModel.find({});
     res.status(200).json(pastries);
   } catch (error) {
     console.log(error);
