@@ -5,7 +5,6 @@ import mongoose from "mongoose";
 import http from "http";
 import "dotenv/config";
 import { port, hostname, localClientURL } from "./config/index.js";
-import routes from "./routes/routes.js";
 import gameRouter from "./routes/game.js";
 import userRouter from "./routes/user.js";
 import adminRouter from "./routes/admin.js";
