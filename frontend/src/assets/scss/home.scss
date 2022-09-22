@@ -1,0 +1,98 @@
+// #home {
+//   padding-top: var(--header-height);
+// }
+#home {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.play-btn {
+  background-color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.result {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  background-color: var(--error-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  span {
+    color: var(--error-message-color);
+    font-weight: 500;
+    margin: 5px 0;
+  }
+}
+
+.result.success {
+  background-color: var(--success-bg-color);
+  span {
+    color: var(--success-message-color);
+  }
+
+  .result-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--success-message-color);
+    color: var(--white-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+.game-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  perspective: 500px;
+
+  .dice.loading {
+    transform-style: preserve-3d;
+    overflow: hidden;
+    margin-right: 2rem;
+    animation: diceRotate 3s infinite ease;
+  }
+
+  @keyframes diceRotate {
+    from {
+      transform: rotateZ(0deg);
+    }
+    to {
+      transform: rotateZ(180deg);
+    }
+  }
+  .dice {
+    background-color: var(--white-color);
+    width: 120px;
+    height: 120px;
+    margin: 2rem;
+    border-radius: 0.6rem;
+    color: var(--black-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+  }
+}

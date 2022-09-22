@@ -1,0 +1,15 @@
+#a-pastries {
+  .add-pastries-btn {
+    background-color: var(--success-message-color);
+  }
+
+  .delete-pastrie-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: max-content;
+    margin: 0;
+    font-size: 0.9em;
+    background-color: var(--danger-message-color);
+  }
+}

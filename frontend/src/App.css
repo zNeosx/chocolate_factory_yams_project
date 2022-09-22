@@ -1,0 +1,140 @@
+:root {
+  --white-color: #f1f1f1;
+  --black-color: #1b1b1c;
+  --primary-color: #432818;
+
+  --danger-message-color: rgb(145, 46, 43);
+  --error-message-color: rgb(145, 46, 43);
+  --error-bg-color: rgb(190, 118, 117);
+  --success-message-color: rgb(47, 83, 27);
+  --success-bg-color: rgb(148, 178, 145);
+
+  --header-height: 20vh;
+
+  --page-width-lg: 70%;
+}
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: #1b1b1c;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Poppins", sans-serif;
+}
+
+.page-container {
+  width: var(--page-width-lg);
+  margin: 0 auto;
+}
+
+.page-title {
+  margin: 1rem 0;
+}
+
+.page-with-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.form {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-title {
+  margin-bottom: 1rem;
+}
+
+.form-item {
+  margin: 1rem 0;
+  width: 80%;
+}
+.form-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background: none;
+  border-bottom: 1px solid #fff;
+  color: var(--white-color);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+.btn {
+  width: 80%;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border: none;
+  outline: none;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  /* margin-right: -50%; */
+  transform: translate(-50%, -50%);
+  background-color: var(--black-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.modal h2 {
+  color: var(--white-color);
+  text-align: center;
+}
+.btn-block {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-btn {
+  width: max-content;
+}
+
+.link {
+  color: var(--white-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.link:hover {
+  color: var(--primary-color);
+}

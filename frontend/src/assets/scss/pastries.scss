@@ -1,0 +1,43 @@
+#patries {
+  h1 {
+    margin: 1rem 0;
+    text-align: center;
+  }
+}
+
+.patries-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+
+  .patrie {
+    width: 100%;
+    height: 100px;
+    margin: 1rem auto;
+    background-color: var(--primary-color);
+    border-radius: 0.5rem;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+    .patrie-name {
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      font-size: 1.5rem;
+      color: var(--white-color);
+    }
+
+    .patrie-date {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 1rem;
+      font-size: 1rem;
+      color: var(--white-color);
+      font-style: italic;
+    }
+  }
+}

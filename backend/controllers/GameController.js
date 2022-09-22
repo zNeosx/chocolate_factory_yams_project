@@ -1,0 +1,47 @@
+import { getDiceRoll, getDicesOccurrences } from "../utils/index.js";
+
+export const getCombination = (_, res) => {
+  let result = {
+    success: false,
+    combination: "Pas de combinaison gagnantes",
+    message: "Dommage, réessayez plus tard !",
+  };
+
+  // Lancement des dés
+  const dices = getDiceRoll();
+
+  // Récupérer les occurrences
+  const occurrences = getDicesOccurrences(dices);
+
+  // Filtrer les combinaisons gagnantes
+  const [carre] = Object.entries(occurrences).filter((occ) => occ[1] === 4);
+  const double = Object.entries(occurrences).filter((occ) => occ[1] === 2);
+  const [yams] = Object.entries(occurrences).filter((occ) => occ[1] === 5);
+
+  if (carre) {
+    result = {
+      success: true,
+      combination: `Carré de ${carre[0]}`,
+      message: "Félicitations ! T'as gagné 2 pâtisseries !",
+      pastries: 2,
+    };
+  }
+  if (double.length === 2) {
+    result = {
+      success: true,
+      combination: `Double de ${double[0][0]} et ${double[1][0]}`,
+      message: "Félicitations ! T'as gagné 1 pâtisserie !",
+      pastries: 1,
+    };
+  }
+  if (yams) {
+    result = {
+      success: true,
+      combination: `Yams de ${yams[0]}`,
+      message: "Félicitations ! T'as gagné 3 pâtisserie !",
+      pastries: 3,
+    };
+  }
+
+  res.status(200).json({ dices, result });
+};
