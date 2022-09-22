@@ -47,6 +47,21 @@ export const deletePastrie = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+export const restorePastry = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const pastryRestored = await PastriesModel.findByIdAndUpdate(id, {
+      isDeleted: false,
+    });
+    res.status(200).json({
+      pastryRestored,
+      message: `La pâtisserie '${pastryRestored.name}' a été restaurée avec succès.`,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
 
 export const addPastry = async (req, res) => {
   try {
