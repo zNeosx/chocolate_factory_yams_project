@@ -1,7 +1,9 @@
 import { Axios } from "../config";
 
-// Pastries Requests
+// Game Requests
+export const getGameStatus = () => Axios.get("/game/getGameStatus");
 
+// Pastries Requests
 export const getAllPastriesRequest = () => {
   return Axios.get("pastries/getAllPastries", {
     headers: {

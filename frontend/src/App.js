@@ -17,31 +17,53 @@ import ClientLayout from "./components/ClientLayout";
 import AdminLayout from "./components/AdminLayout";
 import Login from "./pages/Login";
 import UserPastries from "./pages/UserPastries";
+import { useState } from "react";
+import { useEffect } from "react";
+import { getGameStatus } from "./api";
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<ClientLayout />}>
-          <Route element={<PrivateRoutes />}>
-            <Route index element={<Home />} />
-            <Route path="pastries" element={<Pastries />} />
-            <Route path="mypastries" element={<UserPastries />} />
-          </Route>
-        </Route>
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+  const [gameStatus, setGameStatus] = useState("");
+  useEffect(() => {
+    getGameStatus()
+      .then(({ data }) => {
+        setGameStatus(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-        {/* ADMIN ROUTES*/}
-        <Route path="/admin/login" element={<AdminLogin />} />
-        <Route path="/admin/" element={<AdminLayout />}>
-          <Route element={<AdminRoutes />}>
-            <Route path="pastries" element={<AdminPastries />} />
-            <Route path="addPastry" element={<AddPastryPage />} />
-          </Route>
-        </Route>
-      </Routes>
-    </div>
+  return (
+    <>
+      {gameStatus === "inactive" ? (
+        <div className="game-inactive">
+          <h1>Cet évenement est terminé</h1>
+        </div>
+      ) : (
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<ClientLayout />}>
+              <Route element={<PrivateRoutes />}>
+                <Route index element={<Home />} />
+                <Route path="pastries" element={<Pastries />} />
+                <Route path="mypastries" element={<UserPastries />} />
+              </Route>
+            </Route>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+
+            {/* ADMIN ROUTES*/}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/" element={<AdminLayout />}>
+              <Route element={<AdminRoutes />}>
+                <Route path="pastries" element={<AdminPastries />} />
+                <Route path="addPastry" element={<AddPastryPage />} />
+              </Route>
+            </Route>
+          </Routes>
+        </div>
+      )}
+    </>
   );
 }
 

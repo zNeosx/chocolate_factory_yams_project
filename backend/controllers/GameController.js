@@ -1,4 +1,18 @@
 import { getDiceRoll, getDicesOccurrences } from "../utils/index.js";
+import { PastriesWonModel } from "../models/PastriesWon.js";
+
+export const getGameStatus = async (_, res) => {
+  try {
+    const pastriesWonCount = await PastriesWonModel.count();
+    if (pastriesWonCount < 50) {
+      res.status(200).json({ status: "active", count: pastriesWonCount });
+    } else {
+      res.status(200).json({ status: "inactive", count: pastriesWonCount });
+    }
+  } catch (error) {
+    res.status(500).json({ error });
+  }
+};
 
 export const getCombination = (_, res) => {
   let result = {

@@ -1,5 +1,8 @@
 import express from "express";
-import { getCombination } from "../controllers/GameController.js";
+import {
+  getCombination,
+  getGameStatus,
+} from "../controllers/GameController.js";
 import { checkAuth } from "../middlewares/checkAuth.js";
 
 const router = express.Router();
@@ -9,5 +12,6 @@ router.get("/", (_, res) => {
 });
 
 // Game Routes
+router.get("/getGameStatus", getGameStatus);
 router.get("/getCombination", checkAuth, getCombination);
 export default router;
