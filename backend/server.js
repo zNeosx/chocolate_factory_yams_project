@@ -39,11 +39,10 @@ app.use(
 );
 app.use(express.json());
 async function init() {
-  // app.get("/", (_, res) => {
-  //   res.send("Hello World !");
-  // });
+  app.get("/", (_, res) => {
+    res.send("Hello World !");
+  });
 
-  // app.use(routes);
   app.use("/game/", gameRouter);
   app.use("/user/", userRouter);
   app.use("/pastries/", pastriesRouter);

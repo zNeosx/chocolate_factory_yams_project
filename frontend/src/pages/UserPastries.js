@@ -17,7 +17,6 @@ const UserPastries = () => {
           pastries.map((pastrie, index) => (
             <div className="patrie" key={index}>
               <span className="patrie-name">{pastrie.name}</span>
-              {/* <span className="patrie-date">Gagnée le {pastrie.createdAt}</span> */}
             </div>
           ))
         ) : (

@@ -50,7 +50,7 @@ const Register = () => {
             required
             value={lastname}
             onChange={handleInputChange}
-            autoComplte="off"
+            autoComplete="on"
           />
         </div>
         <div className="form-item">
@@ -63,7 +63,7 @@ const Register = () => {
             required
             value={firstname}
             onChange={handleInputChange}
-            autoComplte="off"
+            autoComplete="on"
           />
         </div>
         <div className="form-item">
@@ -76,7 +76,7 @@ const Register = () => {
             required
             value={email}
             onChange={handleInputChange}
-            autoComplte="off"
+            autoComplete="on"
           />
         </div>
         <div className="form-item">
@@ -89,7 +89,7 @@ const Register = () => {
             required
             value={password}
             onChange={handleInputChange}
-            autoComplte="off"
+            autoComplete="on"
           />
         </div>
         <button type="submit" className="btn btn-submit">

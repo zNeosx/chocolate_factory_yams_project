@@ -69,7 +69,6 @@ export const getPastriesReward = async (req, res) => {
 
 export const getPastriesWon = async (_, res) => {
   try {
-    // const pastries = await PastriesWonModel.find();
     const awards = await PastriesWonModel.find()
       .populate("userId")
       .populate("pastries");

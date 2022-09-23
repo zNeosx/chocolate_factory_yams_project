@@ -28,9 +28,6 @@ const HeaderAdmin = () => {
         <NavLink to={"/admin/pastries"} className="nav-links">
           Toutes les pâtisseries
         </NavLink>
-        {/* <NavLink to={"/pastries"} className="nav-links">
-          Les Pâtisseries Obtenues
-        </NavLink> */}
         <div className="nav-dots"></div>
         {sessionStorage.getItem("token") &&
           myDecodedAdminToken.role === "admin" && (
