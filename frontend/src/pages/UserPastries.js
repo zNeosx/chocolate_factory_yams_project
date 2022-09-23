@@ -5,13 +5,13 @@ const UserPastries = () => {
   const [pastries, setPastries] = useState([]);
   useEffect(() => {
     getUserPastriesRequest()
-      .then(({ data }) => setPastries(data.pastries))
+      .then(({ data }) => data.pastries && setPastries(data.pastries))
       .catch((error) => console.log(error));
   }, []);
 
   return (
     <div id="patries">
-      <h1>Toutes les pâtisseries gagnées</h1>
+      <h1>Toutes vos pâtisseries gagnées</h1>
       <div className="patries-container page-container">
         {pastries.length > 0 ? (
           pastries.map((pastrie, index) => (

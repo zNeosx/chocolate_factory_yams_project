@@ -40,26 +40,25 @@ export const getPastriesReward = async (req, res) => {
   const { pastries } = req.body;
   let pastriesReward = [];
   try {
-    const allPastries = await PastriesModel.find({ isDeleted: false });
+    const allPastries = await PastriesModel.find({
+      isDeleted: false,
+      number: { $gt: 0 },
+    }).exec();
     for (let i = 0; i < pastries; i++) {
       const randompastries = Math.floor(Math.random() * allPastries.length);
       const pastrieRandom = await PastriesModel.findOne({
         order: allPastries[randompastries].order,
       });
-      const newPastrieWon = new PastriesWonModel({
-        name: pastrieRandom.name,
-        winnerName: req.user.lastname,
-        winnerFirstname: req.user.firstname,
+      await PastriesModel.findByIdAndUpdate(pastrieRandom._id, {
+        $inc: { number: -1 },
       });
-      pastriesReward.push(pastrieRandom);
-      await UserModel.findByIdAndUpdate(
-        req.user.id,
+      await PastriesWonModel.findOneAndUpdate(
+        { userId: req.user.id },
         {
           $push: { pastries: pastrieRandom._id },
-        },
-        { new: true }
+        }
       );
-      await newPastrieWon.save();
+      pastriesReward.push(pastrieRandom);
     }
     res.status(200).json({ pastries: pastriesReward });
   } catch (error) {
@@ -70,8 +69,11 @@ export const getPastriesReward = async (req, res) => {
 
 export const getPastriesWon = async (_, res) => {
   try {
-    const pastries = await PastriesWonModel.find();
-    res.status(200).json({ pastries });
+    // const pastries = await PastriesWonModel.find();
+    const awards = await PastriesWonModel.find()
+      .populate("userId")
+      .populate("pastries");
+    res.status(200).json({ awards });
   } catch (error) {
     console.log(error);
     res.status(500).send(error);
@@ -79,8 +81,22 @@ export const getPastriesWon = async (_, res) => {
 };
 export const getUserPastries = async (req, res) => {
   try {
-    const user = await UserModel.findById(req.user.id).populate("pastries");
-    res.status(200).json({ pastries: user.pastries });
+    const userAward = await PastriesWonModel.findOne({
+      userId: req.user.id,
+    })
+      .populate("userId")
+      .populate("pastries");
+    if (userAward) {
+      res.status(200).json({
+        user: {
+          lastname: userAward.userId.lastname,
+          firstname: userAward.userId.firstname,
+        },
+        pastries: userAward.pastries,
+      });
+    } else {
+      res.status(200).json({ message: "Aucun utilisateur" });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).send(error);

@@ -49,6 +49,7 @@ const Login = () => {
             required
             value={email}
             onChange={handleInputChange}
+            autoComplete="off"
           />
         </div>
         <div className="form-item">
@@ -61,6 +62,7 @@ const Login = () => {
             required
             value={password}
             onChange={handleInputChange}
+            autoComplete="off"
           />
         </div>
         <button type="submit" className="btn btn-submit">

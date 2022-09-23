@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { getPastriesWonRequest } from "../api";
 
 const Pastries = () => {
-  const [pastries, setPastries] = useState([]);
+  const [awards, setAwards] = useState([]);
   useEffect(() => {
     getPastriesWonRequest()
-      .then(({ data }) => setPastries(data.pastries))
+      .then(({ data }) => setAwards(data.awards))
       .catch((error) => console.log(error));
   }, []);
 
@@ -13,15 +13,16 @@ const Pastries = () => {
     <div id="patries">
       <h1>Toutes les pâtisseries gagnées</h1>
       <div className="patries-container page-container">
-        {pastries.map((pastrie, index) => (
-          <div className="patrie" key={index}>
-            <span className="patrie-name">{pastrie.name}</span>
-            <span className="patrie-date">
-              Gagnée le {pastrie.createdAt} par {pastrie.winnerFirstname}{" "}
-              {pastrie.winnerName}
-            </span>
-          </div>
-        ))}
+        {awards?.map((award) => {
+          return award.pastries.map((pastrie) => (
+            <div className="patrie" key={pastrie._id}>
+              <span className="patrie-name">{pastrie.name}</span>
+              <span className="patrie-date">
+                Gagnée par {award.userId.firstname} {award.userId.lastname}
+              </span>
+            </div>
+          ));
+        })}
       </div>
     </div>
   );

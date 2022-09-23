@@ -14,7 +14,7 @@ export const getGameStatus = async (_, res) => {
   }
 };
 
-export const getCombination = (_, res) => {
+export const getCombination = async (req, res) => {
   let result = {
     success: false,
     combination: "Pas de combinaison gagnantes",
@@ -56,6 +56,12 @@ export const getCombination = (_, res) => {
       pastries: 3,
     };
   }
-
+  const userGameState = await PastriesWonModel.findOne({ userId: req.user.id });
+  if (!userGameState) {
+    const newUserGameState = new PastriesWonModel({
+      userId: req.user.id,
+    });
+    await newUserGameState.save();
+  }
   res.status(200).json({ dices, result });
 };

@@ -67,6 +67,10 @@ const AdminPastries = () => {
         {pastries?.map((pastry, index) => (
           <div className="patrie" key={index}>
             <span className="patrie-name">{pastry.name}</span>
+            <span className="pastrie-qty">
+              Quantité :{" "}
+              {pastry.number > 0 ? pastry.number : "Rupture de stock"}
+            </span>
             <span
               className="btn delete-pastrie-btn"
               onClick={() => {

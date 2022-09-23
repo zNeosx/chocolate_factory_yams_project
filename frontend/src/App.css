@@ -144,3 +144,17 @@ body {
 .link:hover {
   color: var(--primary-color);
 }
+
+.form-error {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--error-bg-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.error-message {
+  color: var(--error-message-color);
+  font-weight: 500;
+}
