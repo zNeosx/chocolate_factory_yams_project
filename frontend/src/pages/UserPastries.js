@@ -11,7 +11,7 @@ const UserPastries = () => {
 
   return (
     <div id="patries">
-      <h1>Toutes vos pâtisseries gagnées</h1>
+      <h1>Toutes mes pâtisseries gagnées</h1>
       <div className="patries-container page-container">
         {pastries.length > 0 ? (
           pastries.map((pastrie, index) => (

@@ -18,8 +18,7 @@ router.get("/", (_, res) => {
 router.get("/init", init);
 router.get("/getAllPastries", checkAuth, getAllPastries);
 router.get("/getUserPastries", checkAuth, getUserPastries);
-router.get("/getPastriesWon", getPastriesWon);
-// router.get("/getPastriesWon", checkAuth, getPastriesWon);
+router.get("/getPastriesWon", checkAuth, getPastriesWon);
 router.post("/getPastriesReward", checkAuth, getPastriesReward);
 
 export default router;
