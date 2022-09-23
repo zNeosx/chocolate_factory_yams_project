@@ -33,7 +33,7 @@ const Register = () => {
     <div id="register" className="page-with-form">
       <form onSubmit={handleFormSubmit} className="form">
         <div className="form-title">
-          <h2>Inscription à l'évenement</h2>
+          <h2>Inscription à l'évènement</h2>
         </div>
         {error && (
           <div className="form-error">

@@ -32,7 +32,7 @@ const Login = () => {
     <div id="register" className="page-with-form">
       <form onSubmit={handleFormSubmit} className="form">
         <div className="form-title">
-          <h2>Connexion à l'évenement</h2>
+          <h2>Connexion à l'évènement</h2>
         </div>
         {error && (
           <div className="form-error">

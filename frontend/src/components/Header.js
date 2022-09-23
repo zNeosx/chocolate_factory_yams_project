@@ -20,7 +20,7 @@ const Header = () => {
     <header>
       <div className="logo">
         <h1>La chocolaterie</h1>
-        <h2>- Évenement 2022 -</h2>
+        <h2>- Évènement 2022 -</h2>
       </div>
       <nav className="nav">
         <NavLink to={""} className="nav-links">
@@ -37,7 +37,7 @@ const Header = () => {
         <div className="nav-dots"></div>
         {sessionStorage.getItem("token") && (
           <span className="nav-links" onClick={() => leaveEvent()}>
-            Quitter l'évenement
+            Quitter l'évènement
           </span>
         )}
       </nav>
