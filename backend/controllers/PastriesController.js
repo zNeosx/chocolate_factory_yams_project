@@ -46,6 +46,9 @@ export const getPastriesReward = async (req, res) => {
       const pastrieRandom = await PastriesModel.findOne({
         order: allPastries[randompastries].order,
       });
+      await PastriesModel.findOneAndUpdate(pastrieRandom._id, {
+        number: pastrieRandom.number - 1,
+      });
       const newPastrieWon = new PastriesWonModel({
         name: pastrieRandom.name,
         winnerName: req.user.lastname,
