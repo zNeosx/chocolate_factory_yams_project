@@ -1,3 +1,9 @@
+# Projet de Formation
+
+Ce projet a été réalisé dans le cadre de la formation. La stack utilisé : React Js, Node Js, MongoDb. L'application a été développée en une semaine (la conception et le développement) comprenant une page d'inscription, une page d'acceuil, une page profile qui donne l'historique des récompenses de l'utilisateur, une page admin qui gère le CRUD des patisseries. 
+
+Toutes les informations concernant le projet sont données ci-dessous :
+
 # Game Yams
 
 ## Introduction
